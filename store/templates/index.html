@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}
+{% if category %}
+{{ category.name }}
+{% else %}
+Products  
+{% endif %}
+  
+{% endblock title %}
+{% block content %}
+    <div class="row">
+     
+    <h6>
+    {% if category %}Category: {{ category.name }}
+    
+    {% elif price_filter %}Price:{{ price_filter.price}}
+    
+    {% else %}Category: All   
+    {% endif %}
+    
+      
+    </h6>
+    {% for product in products %}
+    <div class="card mb-3 mr-3 " style="width: 13rem;" >
+      <a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" class="card-img-top" alt="..."></a>  
+      <div class="card-body">
+        
+
+        <a href=""><span class="badge badge-pill danger-color">{{ product.category }}</span></a>
+        <h6 class="card-title">{{ product.name }} </h6>
+        
+        <h3 class="card-text"><b>&#8358;{{ product.price | intcomma }} </b> </h3>
+        <a href="{{ product.get_absolute_url }}" class="btn bg-info btn-sm" ><p> Add cart</p></a>
+             
+        
+      
+      </div>
+    </div>    
+    {% endfor %}
+  </div>     
+  
+  {% include 'banner.html' %}
+      
+
+{% endblock content %}
+ 

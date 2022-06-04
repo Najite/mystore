@@ -1,0 +1,41 @@
+<h6>Categories</h6>
+<div class="d-flex align-items-start m-3" width:20rem;>
+    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        
+        {% if not category %}    
+        {% endif %}
+        <a href="{% url 'store:product_list' %}" class="nav-link {% if request.path == product_url %} active {% endif %}" >All</a>
+      
+      {% for c in categories %}
+      {% if category.slug == c.slug %} 
+      {% endif %}
+      
+      <a href="{{ c.get_absolute_url }}" class="nav-link {% if request.path == c.get_absolute_url %} active bg-warning  {% endif %}">{{ c.name }}</a>
+             
+      {% endfor %}
+        
+      
+
+    </div>
+  </div>
+
+  <h6> Price</h6>
+  <div class="d-flex align-items-start m-3">
+    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">       
+      
+      {% for p in prices %}
+      
+      {% if price_slug == p.slug %}
+        
+      {% endif %}
+        
+      
+      <a href="{{ p.get_absolute_url }}" class="nav-link {% if request.path == p.get_absolute_url %} active bg-warning {% endif %}">{{ p.price }}</a>
+             
+      {% endfor %}
+
+    </div>
+  </div>
+
+    
+   

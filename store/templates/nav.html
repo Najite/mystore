@@ -1,0 +1,62 @@
+<!-- Navbar -->
+{% load humanize %}
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark dark bg-warning top-banner">
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand waves-effect" href="{% url 'store:product_list' %}" target="_blank">
+      <strong class="white-text">ESTORE</strong>
+    </a>
+
+    <!-- Collapse -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <!-- Left -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="#">
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>       
+      </ul>
+
+      <!-- Right -->
+      <ul class="navbar-nav nav-flex-icons">
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="{% url 'cart:cart_detail' %}">
+            <span class="badge red z-depth-1 mr-1">
+              
+              {% with cart_item=cart|length %}
+              
+              {% if cart_item > 0 %}
+
+              <span class="clearfix d-none d-sm-inline-block">{{ cart_item}} Cart {{ cart_item | pluralize}}</span>
+
+              {% else %}
+              0
+                
+              {% endif %}                
+                
+              {% endwith %}                
+              
+            </span>
+            <i class="fas fa-shopping-cart"></i>
+             &#8358;{{ cart.get_total_price | intcomma }}
+            
+          </a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
+
+<!-- Navbar -->

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav-content %}
+
+
+    
+{% endblock nav-content %}  
+
+
+{% block payment %}
+<section class="payment-section">
+<div class="payment">
+  <h1>Make Payments</h1>
+<form action="{% url 'payment:payment' %}" method="post">
+  {% csrf_token %}
+  <div class="col-md-6 mb-3">
+    <label for="cc-name">Name on card</label>
+    <input type="text" class="form-control" id="cc-name" name="'Fname" placeholder="Firstname" required>
+
+    <label for="cc-name">Name on card</label>
+    <input type="text" class="form-control" id="cc-name" name="lname" placeholder="Lastname" required>
+
+    <small class="text-muted">Full name as displayed on card</small>
+    <div class="invalid-feedback">
+      Name on card is required
+    </div>
+  </div>
+  <h3>pays</h3>
+  <div class="col-md-6 mb-3">
+    <label for="cc-number">Credit card number</label>
+    <input type="text" name="card-no" class="form-control" id="cc-number" placeholder="" required>
+    <div class="invalid-feedback">
+      Credit card number is required
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 mb-3">
+      <label for="cc-expiration">Month</label>
+      <input type="text" class="form-control" id="cc-expiration" name="month" placeholder="08/39" required>
+
+      <label for="cc-expiration">Year</label>
+      <input type="text" class="form-control" id="cc-expiration" name="year" placeholder="08/39" required>
+
+      <div class="invalid-feedback">
+        Expiration date required
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="cc-expiration">CVV</label>
+      <input type="text" name="cvv" class="form-control" id="cc-cvv" placeholder="" required>
+      <div class="invalid-feedback">
+        Security code required
+      </div>
+    </div>
+  </div>
+
+  <button type="submit">Make Payment</button>
+
+</form>
+</div>
+</section>
+{% endblock payment %}
+  
+
+
+
+
+{% block side-nav %}
+  
+{% endblock side-nav %}
+  
+
+
+  <script src="{% static 'js/flutterwave.js' %}"></script>
+</body>
+</html>

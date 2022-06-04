@@ -1,0 +1,33 @@
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        
+        {% for carousel in carousels %}
+        
+        {% if forloop.first %}
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{forloop.counter0 }}" class="active" ></button>
+
+        {% else %}
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{forloop.counter0 }}"></button>
+
+        {% endif %}           
+          
+        {% endfor %}
+            
+    </div>
+    <div class="carousel-inner">
+        
+        {% for carousel in carousels %}
+        
+        {% if forloop.first %}
+        <div class="carousel-item active">
+            {% else %}
+          <div class="carousel-item">            
+        {% endif %}
+        <img src="{{ carousel.image.url }}">  
+        </div>
+        {% endfor %}
+          </div>
+     
+    </div>
+    
+  </div>
