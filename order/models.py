@@ -9,6 +9,7 @@ class Order(models.Model):
     phone = models.IntegerField()
     address = models.CharField(max_length=30)
     email = models.EmailField()
+    paid = models.BooleanField(default=False)
     
     def __str__(self):
         return f'Order, {self.id}'
@@ -22,7 +23,7 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, related_name= 'order_item', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveBigIntegerField(default=1)
-    paid = models.BooleanField(default=False)
+    
     
     def __str__(self):
         return str(self.id)
